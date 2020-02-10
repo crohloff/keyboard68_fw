@@ -1,0 +1,8 @@
+# nRF52840 Module board configuration
+
+# Copyright (c) 2016 Nordic Semiconductor ASA
+# SPDX-License-Identifier: Apache-2.0
+
+config BOARD_NRF52840_MODULE
+	bool "NRF52840 Module"
+	depends on SOC_NRF52840_QIAA
