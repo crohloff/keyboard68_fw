@@ -1,0 +1,21 @@
+sudo: required
+
+language: c
+
+services:
+  - docker
+
+env: SH="docker exec -t keyboard_fw-image bash -c"
+
+before_install:
+  - docker build -t keyboard_fw .
+  - docker run -t -d --rm -v $(pwd):/opt/workspace/ -w /opt/workspace --name keyboard_fw-image keyboard_fw
+  - docker ps -a
+
+install:
+  - $SH "chmod +x build.sh"
+  - $SH "ls -l"
+  - $SH "ls -l /opt/"
+
+script:
+  - $SH "/opt/workspace/build.sh build"
